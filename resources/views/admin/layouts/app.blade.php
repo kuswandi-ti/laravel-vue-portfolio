@@ -8,7 +8,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>AdminLTE 3 | Starter</title>
+    <title>Portfolio Admin - Kuswandi</title>
 
     @vite('resources/css/app.css')
 </head>
@@ -195,6 +195,12 @@
                             <router-link to="/admin/users" active-class="active" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p> Users</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/admin/about" active-class="active" class="nav-link">
+                                <i class="nav-icon fas fa-address-card"></i>
+                                <p> About</p>
                             </router-link>
                         </li>
                         {{-- <li class="nav-item">

@@ -9,6 +9,7 @@ import AppointmentForm from '../pages/appointments/AppointmentForm.vue';
 import UserList from '../pages/users/UserList.vue';
 import UpdateSetting from '../pages/settings/UpdateSetting.vue';
 import UpdateProfile from '../pages/profile/UpdateProfile.vue';
+import UpdateAbout from '../pages/about/UpdateAbout.vue';
 
 export const routes = [
     {        
@@ -55,6 +56,11 @@ export const routes = [
         path: '/admin/profile',
         name: 'admin.profile',
         component: UpdateProfile,
+    },
+    {        
+        path: '/admin/about',
+        name: 'admin.about',
+        component: UpdateAbout,
     },
 ]
 

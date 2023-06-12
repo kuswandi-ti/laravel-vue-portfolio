@@ -9,6 +9,8 @@ use App\Http\Controllers\API\AppointmentController;
 use App\Http\Controllers\API\DashboardStatusController;
 use App\Http\Controllers\API\AppointmentStatusController;
 
+use App\Http\Controllers\API\AboutController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,6 +21,10 @@ use App\Http\Controllers\API\AppointmentStatusController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+// Portfolio
+Route::get('/about', [AboutController::class, 'index']);
+Route::post('/about/{id}', [AboutController::class, 'update']);
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
@@ -40,7 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/appointment-status', [AppointmentStatusController::class, 'getStatusWithCount']);
 
-    Route::get('/status/appointments', [DashboardStatusController::class, 'appointments']);
+    Route::get('/status/appointments', [DashboardStatusController::class, 'appointments']);    
 
     Route::post('/logout', [UserController::class, 'logout']);
 });
