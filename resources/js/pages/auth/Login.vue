@@ -37,13 +37,14 @@
 <template>
     <div class="login-box">
         <div class="register-logo">
-            <span>Multipurpose Module Laravel Vue</span>
+            <span>Login Admin</span>
         </div>
         <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <span class="h1">Login</span>
-            </div>
             <div class="card-body">
+                <div class="alert alert-warning">
+                    <h6>Email : <strong>kuswandi.ti@gmail.com</strong></h6>
+                    <h6>Password : <strong>12345678</strong></h6>
+                </div>
                 <div v-if="errorMessage" class="alert alert-danger" role="alert">
                     {{ errorMessage }}
                 </div>
@@ -69,7 +70,7 @@
                     <div class="row">
                         <div class="col-8">
                             <p class="mb-0">
-                                <a href="/register" class="text-center">Register a new user</a>
+                                <a href="/" class="text-center">Return to Website</a>
                             </p>
                         </div>
 

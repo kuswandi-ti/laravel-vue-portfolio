@@ -109,16 +109,14 @@
                         <div class="card-body">
                             <Form ref="form" @submit="handleSubmit" :validation-schema="editUserSchema" v-slot="{ errors }" :initial-values="formValues">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="name">Name</label>
                                             <Field name="name" type="text" class="form-control" id="name" placeholder="Enter Full Name" :class="{ 'is-invalid': errors.name}" />
                                             <span id="errorName" class="invalid-feedback">{{ errors.name }}</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="job_title">Job Title</label>
                                             <Field name="job_title" type="text" class="form-control" id="job_title" placeholder="Enter Job Title" :class="{ 'is-invalid': errors.job_title}" />
@@ -127,14 +125,14 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="place_of_birth">Place of Birth</label>
                                             <Field name="place_of_birth" type="text" class="form-control" id="place_of_birth" placeholder="Enter Place of Birth" :class="{ 'is-invalid': errors.place_of_birth}" />
                                             <span id="errorPlaceOfBirth" class="invalid-feedback">{{ errors.place_of_birth }}</span>
                                         </div>                                        
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="date_of_birth">Date of Birth</label>
                                             <Field name="date_of_birth" type="text" class="form-control flatpickr" id="date_of_birth" placeholder="Enter Date of Birth" :class="{ 'is-invalid': errors.date_of_birth}" />
@@ -143,7 +141,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="address">Address</label>
                                             <Field name="address" as="textarea" class="form-control" cols="30" rows="5" id="address" placeholder="Enter Address" :class="{ 'is-invalid': errors.address}" />
@@ -152,16 +150,14 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <Field name="email" type="email" class="form-control" id="email" placeholder="Enter Email" :class="{ 'is-invalid': errors.email}" />
                                             <span id="errorEmail" class="invalid-feedback">{{ errors.email }}</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
                                             <Field name="phone" type="text" class="form-control" id="phone" placeholder="Enter Phone" :class="{ 'is-invalid': errors.phone}" />
@@ -170,7 +166,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="description">Description</label>
                                             <Field name="description" as="textarea" class="form-control" cols="30" rows="5" id="description" placeholder="Enter Description" :class="{ 'is-invalid': errors.description}" />
