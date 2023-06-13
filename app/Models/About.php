@@ -12,11 +12,12 @@ class About extends Model
     protected $fillable = [
         'name',               
         'job_title',
+        'job_description',
         'place_of_birth',
         'date_of_birth',
         'address',
         'email',
         'phone',
-        'description',
+        'about_description',
     ];
 }

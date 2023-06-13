@@ -35,12 +35,13 @@ class AboutController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',                
                 'job_title' => 'required',
+                'job_description' => 'required',
                 'place_of_birth' => 'required',
                 'date_of_birth' => 'required',
                 'address' => 'required',
                 'email' => 'required|email|unique:abouts,email,' . $id,
                 'phone' => 'required',
-                'description' => 'required',
+                'about_description' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -54,12 +55,13 @@ class AboutController extends Controller
             $data = [
                 'name' => $request->name,
                 'job_title' => $request->job_title,
+                'job_description' => $request->job_description,
                 'place_of_birth' => $request->place_of_birth,
                 'date_of_birth' => $request->date_of_birth,
                 'address' => $request->address,
                 'email' => $request->email,
-                'phone' => $request->phone,
-                'description' => $request->description,
+                'phone' => $request->phone,    
+                'about_description' => $request->about_description,            
             ];
 
             if (About::where('id', $id)->exists()) {

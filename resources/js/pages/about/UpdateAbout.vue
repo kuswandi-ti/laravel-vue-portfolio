@@ -11,12 +11,13 @@
     const editUserSchema = yup.object({
         name: yup.string().required(),
         job_title: yup.string().required('job title is a required field'),
+        job_description: yup.string().required('job description is a required field'),
         place_of_birth: yup.string().required('place of birth is a required field'),
         date_of_birth: yup.string().required('date or birth is a required field'),        
         address: yup.string().required(),
         email: yup.string().email().required(),
         phone: yup.string().required(),
-        description: yup.string().required(),
+        about_description: yup.string().required('about description is a required field'),
     })
 
     const handleSubmit = (values, actions) => {
@@ -31,24 +32,26 @@
                     id: 0,
                     name: '',
                     job_title: '',
+                    job_description: '',
                     place_of_birth: '',
                     date_of_birth: '',
                     address: '',
                     email: '',
                     phone: '',
-                    description: '',
+                    about_description: '',
                 }
             } else {
                 formValues.value = {                
                     id: response.data.data[0].id,
                     name: response.data.data[0].name,
                     job_title: response.data.data[0].job_title,
+                    job_description: response.data.data[0].job_description,
                     place_of_birth: response.data.data[0].place_of_birth,
                     date_of_birth: response.data.data[0].date_of_birth,
                     address: response.data.data[0].address,
                     email: response.data.data[0].email,
                     phone: response.data.data[0].phone,
-                    description: response.data.data[0].description,
+                    about_description: response.data.data[0].about_description,
                 }
             }            
         })
@@ -109,7 +112,7 @@
                         <div class="card-body">
                             <Form ref="form" @submit="handleSubmit" :validation-schema="editUserSchema" v-slot="{ errors }" :initial-values="formValues">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="name">Name</label>
                                             <Field name="name" type="text" class="form-control" id="name" placeholder="Enter Full Name" :class="{ 'is-invalid': errors.name}" />
@@ -126,6 +129,15 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="job_description">Job Description</label>
+                                            <Field name="job_description" as="textarea" class="form-control" cols="30" rows="5" id="job_description" placeholder="Enter Job Description" :class="{ 'is-invalid': errors.job_description}" />
+                                            <span id="errorJobDescription" class="invalid-feedback">{{ errors.job_description }}</span>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="place_of_birth">Place of Birth</label>
                                             <Field name="place_of_birth" type="text" class="form-control" id="place_of_birth" placeholder="Enter Place of Birth" :class="{ 'is-invalid': errors.place_of_birth}" />
@@ -168,9 +180,9 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <Field name="description" as="textarea" class="form-control" cols="30" rows="5" id="description" placeholder="Enter Description" :class="{ 'is-invalid': errors.description}" />
-                                            <span id="errorDescription" class="invalid-feedback">{{ errors.description }}</span>
+                                            <label for="about_description">About Description</label>
+                                            <Field name="about_description" as="textarea" class="form-control" cols="30" rows="5" id="about_description" placeholder="Enter About Description" :class="{ 'is-invalid': errors.about_description}" />
+                                            <span id="errorAboutDescription" class="invalid-feedback">{{ errors.about_description }}</span>
                                         </div>                                        
                                     </div>
                                 </div>

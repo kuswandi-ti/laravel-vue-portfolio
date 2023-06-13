@@ -123,12 +123,10 @@
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Address </strong> <span>{{ $about->address }}</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Job Title </strong> <span>{{ $about->job_title }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Job Desc. </strong> <span>{{ $about->job_description }}</span></li>
                 </ul>
               </div>
             </div>
-            <p>
-              {{ $about->job_description }}
-            </p>
           </div>
         </div>
 
