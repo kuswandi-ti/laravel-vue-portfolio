@@ -4,12 +4,15 @@ import Dashboard from '../components/Dashboard.vue';
 
 import Login from '../pages/auth/Login.vue';
 import Register from '../pages/auth/Register.vue';
+
 import ListAppointments from '../pages/appointments/ListAppointments.vue';
 import AppointmentForm from '../pages/appointments/AppointmentForm.vue';
 import UserList from '../pages/users/UserList.vue';
 import UpdateSetting from '../pages/settings/UpdateSetting.vue';
 import UpdateProfile from '../pages/profile/UpdateProfile.vue';
+
 import UpdateAbout from '../pages/about/UpdateAbout.vue';
+import SkillList from '../pages/skill/SkillList.vue';
 
 export const routes = [
     {        
@@ -61,6 +64,11 @@ export const routes = [
         path: '/admin/about',
         name: 'admin.about',
         component: UpdateAbout,
+    },
+    {        
+        path: '/admin/skills',
+        name: 'admin.skills',
+        component: SkillList,
     },
 ]
 

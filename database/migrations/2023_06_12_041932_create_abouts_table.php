@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('job_title');
+            $table->string('job_description');
             $table->string('place_of_birth');
             $table->date('date_of_birth');
             $table->text('address');
             $table->string('email');
-            $table->string('phone');
-            $table->string('description');
+            $table->string('phone');  
+            $table->string('about_description');          
             $table->timestamps();
         });
     }

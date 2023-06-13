@@ -10,6 +10,7 @@ use App\Http\Controllers\API\DashboardStatusController;
 use App\Http\Controllers\API\AppointmentStatusController;
 
 use App\Http\Controllers\API\AboutController;
+use App\Http\Controllers\API\SkillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +23,19 @@ use App\Http\Controllers\API\AboutController;
 |
 */
 
-// Portfolio
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
+
+// About
 Route::get('/about', [AboutController::class, 'index']);
 Route::post('/about/{id}', [AboutController::class, 'update']);
 
-Route::post('/register', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
+// Skills
+Route::get('/skills', [SkillController::class, 'index']);
+Route::post('/skills', [SkillController::class, 'store']);
+Route::post('/skills/{id}', [SkillController::class, 'update']);
+Route::delete('/skills/{id}', [SkillController::class, 'destroy']);
+Route::delete('/skills', [SkillController::class, 'bulkDelete']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users', [UserController::class, 'index']);
