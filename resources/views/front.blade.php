@@ -50,7 +50,7 @@
         <h1 class="text-light"><a href="index.html" class="text-warning">{{ $about->name }}</a></h1>
         <div class="mt-4 text-light text-center">
           <span>
-            {{ $about->address }}
+            {{ $about->job_title }}
           </span>
         </div>
         <div class="mt-3 text-light text-center">
@@ -171,7 +171,21 @@
 
         <div class="row">
           <div class="col-lg-12" data-aos="fade-up">
-            <div class="resume-item">
+            @forelse($educations as $education)
+              <div class="resume-item">
+                <h4>{{ $education->education_name }}, {{ $education->education_city }}</h4>
+                <h5>{{ $education->education_year_from }} - {{ $education->education_year_to }}</h5>
+                @if($education->education_major != NULL)
+                  <p><em><strong>Major : </strong> {{ $education->education_major == NULL ? '-' : $education->education_major }}</em></p>
+                @endif                
+                @if($education->education_gpa != 0)
+                <p><strong>GPA : </strong> {{ $education->education_gpa == 0 ? '-' : $education->education_gpa }}</p>
+                @endif                
+              </div>
+            @empty
+
+            @endforelse
+            {{-- <div class="resume-item">
               <h4>Master of Fine Arts &amp; Graphic Design</h4>
               <h5>2015 - 2016</h5>
               <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
@@ -182,7 +196,7 @@
               <h5>2010 - 2014</h5>
               <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
               <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
-            </div>
+            </div> --}}
           </div>
         </div>
 

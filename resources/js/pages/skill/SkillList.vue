@@ -236,7 +236,7 @@
                         </tbody>
                         <tbody v-else>
                             <tr>
-                                <td colspan="6" class="text-center">
+                                <td colspan="5" class="text-center">
                                     No results found...
                                 </td>
                             </tr>
@@ -272,7 +272,7 @@
                         </div>
                         <div class="form-group">
                             <label for="skill_experience">Skill Experience (in year)</label>
-                            <Field name="skill_experience" type="number" class="form-control" id="email" placeholder="Enter skill experience" :class="{ 'is-invalid': errors.skill_experience}" />
+                            <Field name="skill_experience" type="number" class="form-control" id="skill_experience" placeholder="Enter skill experience" :class="{ 'is-invalid': errors.skill_experience}" />
                             <span id="errorSkillExperience" class="invalid-feedback">{{ errors.skill_experience }}</span>
                         </div>
                     </div>

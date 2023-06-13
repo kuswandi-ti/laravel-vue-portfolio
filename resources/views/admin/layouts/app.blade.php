@@ -72,6 +72,12 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link to="/admin/educations" active-class="active" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p> Educations</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
                             <form method="POST" action="/logout" class="nav-link">
                                 @csrf
                                 <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
