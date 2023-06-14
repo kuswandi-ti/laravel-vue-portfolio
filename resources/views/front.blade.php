@@ -53,7 +53,8 @@
             {{ $about->job_title }}
           </span>
         </div>
-        <div class="mt-4 text-light text-center">
+        <div class="mt-4 text-light text-center">          
+          <a href="admin/dashboard" class="btn btn-block btn-warning" target="_blank">Admin Login</a>
           <button type="button" class="btn btn-block btn-primary">Download CV</button>
         </div>
         <div class="mt-3 text-light text-center">
@@ -77,7 +78,7 @@
           <li><a href="#educations" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Educations</span></a></li>
           <li><a href="#work_experience" class="nav-link scrollto"><i class='bx bx-briefcase'></i> <span>Work Experience</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-          <li><a href="/login" class="nav-link"><i class='bx bx-fingerprint'></i> <span>Login</span></a></li>
+          <li><a href="#contact" class="nav-link scrollto"><i class='bx bxs-contact'></i> <span>Contact</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
@@ -407,51 +408,67 @@
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>{{ $about->address }}</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>info@example.com</p>
+                <p><a href="mailto:kuswandi.ti@gmail.com">{{ $about->email }}</a></p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
-              </div>
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+                <p><a href="https://wa.me/{{ $about->phone }}" target="_blank">{{ $about->phone }}</a></p>
+              </div>              
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1178.7024226534572!2d107.00685445229256!3d-6.436853308607611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699749293b165d%3A0x81c8ebb4b3dd5ff0!2sRumah%20Kuswandi%20-%20Deka!5e0!3m2!1sid!2sid!4v1686709861655!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-
           </div>
 
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">            
+            <form action="{{ route('contact.us.store') }}" method="POST" role="form" class="php-email-form">
+              {{ csrf_field() }}
+              @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ $message }}
+                </div>
+              @endif
+              @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Please check the form below for errors</strong>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </div>
+              @endif
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
                   <input type="text" name="name" class="form-control" id="name" required>
+                  <span class="text-danger">{{ $errors->first('name') }}</span>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
+                  <label for="email">Your Email</label>
                   <input type="email" class="form-control" name="email" id="email" required>
+                  <span class="text-danger">{{ $errors->first('email') }}</span>
                 </div>
               </div>
               <div class="form-group">
-                <label for="name">Subject</label>
+                <label for="subject">Subject</label>
                 <input type="text" class="form-control" name="subject" id="subject" required>
+                <span class="text-danger">{{ $errors->first('subject') }}</span>
               </div>
               <div class="form-group">
-                <label for="name">Message</label>
+                <label for="message">Message</label>
                 <textarea class="form-control" name="message" rows="10" required></textarea>
+                <span class="text-danger">{{ $errors->first('message') }}</span>
               </div>
-              <div class="my-3">
+              {{-- <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
+              </div> --}}
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
@@ -459,8 +476,8 @@
       </div>
     </section>
     <!-- End Contact Section -->
-
-  </main><!-- End #main -->
+  </main>
+  <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   {{-- <footer id="footer">
@@ -476,7 +493,8 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End  Footer --> --}}
+  </footer> --}}
+  <!-- End  Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -489,7 +507,7 @@
   <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/typed.js/typed.umd.js') }}"></script>
   <script src="{{ asset('assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
-  <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+  {{-- <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script> --}}
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>

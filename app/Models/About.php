@@ -19,5 +19,7 @@ class About extends Model
         'email',
         'phone',
         'about_description',
+        'photo',
+        'cv',
     ];
 }

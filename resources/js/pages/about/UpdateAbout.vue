@@ -39,6 +39,8 @@
                     email: '',
                     phone: '',
                     about_description: '',
+                    photo: '',
+                    cv: '',
                 }
             } else {
                 formValues.value = {                
@@ -52,12 +54,14 @@
                     email: response.data.data[0].email,
                     phone: response.data.data[0].phone,
                     about_description: response.data.data[0].about_description,
+                    photo: response.data.data[0].photo,
+                    cv: response.data.data[0].cv,
                 }
             }            
         })
     }
 
-    const updateAbout = async (values, actions) => {        
+    const updateAbout = async (values, actions) => {
         await axios.post('/api/about/' + formValues.value.id, values)
         .then((response) => {
             Toast.fire({
@@ -112,76 +116,76 @@
                         <div class="card-body">
                             <Form ref="form" @submit="handleSubmit" :validation-schema="editUserSchema" v-slot="{ errors }" :initial-values="formValues">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="name">Name</label>
-                                            <Field name="name" type="text" class="form-control" id="name" placeholder="Enter Full Name" :class="{ 'is-invalid': errors.name}" />
+                                            <Field name="name" id="name" type="text" class="form-control" placeholder="Enter Full Name" :class="{'is-invalid': errors.name}" />
                                             <span id="errorName" class="invalid-feedback">{{ errors.name }}</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="job_title">Job Title</label>
-                                            <Field name="job_title" type="text" class="form-control" id="job_title" placeholder="Enter Job Title" :class="{ 'is-invalid': errors.job_title}" />
+                                            <Field name="job_title" id="job_title" type="text" class="form-control" placeholder="Enter Job Title" :class="{'is-invalid': errors.job_title}" />
                                             <span id="errorJobTitle" class="invalid-feedback">{{ errors.job_title }}</span>
                                         </div>                                        
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="job_description">Job Description</label>
-                                            <Field name="job_description" as="textarea" class="form-control" cols="30" rows="5" id="job_description" placeholder="Enter Job Description" :class="{ 'is-invalid': errors.job_description}" />
+                                            <Field name="job_description" id="job_description" as="textarea" class="form-control" cols="30" rows="3" placeholder="Enter Job Description" :class="{'is-invalid': errors.job_description}" />
                                             <span id="errorJobDescription" class="invalid-feedback">{{ errors.job_description }}</span>
                                         </div>                                        
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="place_of_birth">Place of Birth</label>
-                                            <Field name="place_of_birth" type="text" class="form-control" id="place_of_birth" placeholder="Enter Place of Birth" :class="{ 'is-invalid': errors.place_of_birth}" />
+                                            <Field name="place_of_birth" id="place_of_birth" type="text" class="form-control" placeholder="Enter Place of Birth" :class="{'is-invalid': errors.place_of_birth}" />
                                             <span id="errorPlaceOfBirth" class="invalid-feedback">{{ errors.place_of_birth }}</span>
                                         </div>                                        
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="date_of_birth">Date of Birth</label>
-                                            <Field name="date_of_birth" type="text" class="form-control flatpickr" id="date_of_birth" placeholder="Enter Date of Birth" :class="{ 'is-invalid': errors.date_of_birth}" />
+                                            <Field name="date_of_birth" id="date_of_birth" type="text" class="form-control flatpickr" placeholder="Enter Date of Birth" :class="{'is-invalid': errors.date_of_birth}" />
                                             <span id="errorDateOfBirth" class="invalid-feedback">{{ errors.date_of_birth }}</span>
                                         </div>                                        
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="address">Address</label>
-                                            <Field name="address" as="textarea" class="form-control" cols="30" rows="5" id="address" placeholder="Enter Address" :class="{ 'is-invalid': errors.address}" />
+                                            <Field name="address" id="address" as="textarea" class="form-control" cols="30" rows="3" placeholder="Enter Address" :class="{'is-invalid': errors.address}" />
                                             <span id="errorAddress" class="invalid-feedback">{{ errors.address }}</span>
                                         </div>                                        
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <Field name="email" type="email" class="form-control" id="email" placeholder="Enter Email" :class="{ 'is-invalid': errors.email}" />
+                                            <Field name="email" id="email" type="email" class="form-control" placeholder="Enter Email" :class="{'is-invalid': errors.email}" />
                                             <span id="errorEmail" class="invalid-feedback">{{ errors.email }}</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
-                                            <Field name="phone" type="text" class="form-control" id="phone" placeholder="Enter Phone" :class="{ 'is-invalid': errors.phone}" />
+                                            <Field name="phone" id="phone" type="text" class="form-control" placeholder="Enter Phone" :class="{'is-invalid': errors.phone}" />
                                             <span id="errorPhone" class="invalid-feedback">{{ errors.phone }}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="about_description">About Description</label>
-                                            <Field name="about_description" as="textarea" class="form-control" cols="30" rows="5" id="about_description" placeholder="Enter About Description" :class="{ 'is-invalid': errors.about_description}" />
+                                            <Field name="about_description" id="about_description" as="textarea" class="form-control" cols="30" rows="3" placeholder="Enter About Description" :class="{'is-invalid': errors.about_description}" />
                                             <span id="errorAboutDescription" class="invalid-feedback">{{ errors.about_description }}</span>
                                         </div>                                        
                                     </div>

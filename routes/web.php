@@ -20,5 +20,6 @@ use App\Http\Controllers\FrontController;
 // });
 
 Route::get('/', [FrontController::class, 'index']);
+Route::post('contact-us', [FrontController::class, 'store'])->name('contact.us.store');
 
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)')->middleware('auth:sanctum');
