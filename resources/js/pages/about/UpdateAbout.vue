@@ -62,7 +62,21 @@
     }
 
     const updateAbout = async (values, actions) => {
-        await axios.post('/api/about/' + formValues.value.id, values)
+        const formData = new FormData();
+        formData.append('id', values.id);
+        formData.append('name', values.name);
+        formData.append('job_title', values.job_title);
+        formData.append('job_description', values.job_description);
+        formData.append('place_of_birth', values.place_of_birth);
+        formData.append('date_of_birth', values.date_of_birth);
+        formData.append('address', values.address);
+        formData.append('email', values.email);
+        formData.append('phone', values.phone);
+        formData.append('about_description', values.about_description);
+        formData.append('photo', values.photo);
+        formData.append('cv', values.cv);
+
+        await axios.post('/api/about/' + formValues.value.id, formData)
         .then((response) => {
             Toast.fire({
                 icon: 'success',
@@ -73,6 +87,16 @@
             actions.setErrors(error.response.data.message)
         })
     }
+
+    const onFileChangePhoto = (e) => {
+        formValues.value.photo = e.target.files[0]
+        // console.log(formValues.value.photo)
+    };
+
+    const onFileChangeCv = (e) => {
+        formValues.value.cv = e.target.files[0]
+        // console.log(formValues.value.cv)
+    };
 
     onMounted(() => {
         flatpickr(".flatpickr", {
@@ -190,7 +214,24 @@
                                         </div>                                        
                                     </div>
                                 </div>
-
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Upload Photo</label>
+                                            <Field name="photo" id="photo" as="file" class="form-control">
+                                                <input type="file" @change="onFileChangePhoto" />
+                                            </Field>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cv">Upload CV</label>
+                                            <Field name="cv" id="cv" as="file" class="form-control">
+                                                <input type="file" @change="onFileChangeCv" />
+                                            </Field>
+                                        </div>                                        
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </Form>
                         </div>

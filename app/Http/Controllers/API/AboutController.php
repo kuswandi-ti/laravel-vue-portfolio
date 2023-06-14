@@ -7,6 +7,8 @@ use App\Models\About;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+use Image;
+
 class AboutController extends Controller
 {
     public function index()
@@ -52,6 +54,24 @@ class AboutController extends Controller
                 return response()->json($response, 400);
             }
 
+            // Upload Image
+            $photo = $request->file('photo');
+            $extension_photo = $photo->getClientOriginalExtension();
+            $timestamp_name_photo = "photo_".time() . '.' . $extension_photo;
+            $path_photo = 'admin/images/photo/';
+            !is_dir($path_photo) && mkdir($path_photo, 0777, true);
+            $new_photo = $path_photo . $timestamp_name_photo;
+            Image::make($photo)->resize(300, 300)->save($new_photo);
+
+            // Upload Cv
+            $cv = $request->file('cv');
+            $extension_cv = $cv->getClientOriginalExtension();
+            $timestamp_name_cv = "cv_".time() . '.' . $extension_cv;
+            $path_cv = 'admin/document/pdf/';
+            !is_dir($path_cv) && mkdir($path_cv, 0777, true);
+            $new_cv = $path_cv . $timestamp_name_cv;
+            $cv->move($path_cv, $timestamp_name_cv);
+
             $data = [
                 'name' => $request->name,
                 'job_title' => $request->job_title,
@@ -62,6 +82,8 @@ class AboutController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,    
                 'about_description' => $request->about_description,            
+                'photo' => $new_photo, 
+                'cv' => $new_cv, 
             ];
 
             if (About::where('id', $id)->exists()) {
