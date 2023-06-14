@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Education;
+use App\Models\WorkExperience;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class EducationController extends Controller
+class WorkExperienceController extends Controller
 {
     public function index()
     {
         try {
-            $educations = Education::query()
+            $work_experiences = WorkExperience::query()
                 ->when(request('query'), function ($query, $searchQuery) {
-                    $query->where('education_name', 'like', "%{$searchQuery}%");
+                    $query->where('work_experience_name', 'like', "%{$searchQuery}%");
                 })
                 ->orderBy('id', 'asc')
                 ->latest()
@@ -22,8 +22,8 @@ class EducationController extends Controller
 
             $response = [
                 'success' => true,
-                'data' => $educations,
-                'message' => 'Get data Education successfully'
+                'data' => $work_experiences,
+                'message' => 'Get data Work Experiences successfully'
             ];
 
             return response()->json($response, 200);
@@ -39,11 +39,13 @@ class EducationController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'education_name' => 'required',
-                'education_city' => 'required',
-                'education_year_from' => 'required|numeric',
-                'education_year_to' => 'required|numeric',
-                'education_gpa' => 'required|numeric',
+                'we_name' => 'required',
+                'we_city' => 'required',
+                'we_year_from' => 'required|numeric',
+                'we_year_to' => 'required|numeric',
+                'we_position' => 'required',
+                'we_job_description' => 'required',
+                'we_reason_to_leave' => 'required',                
             ]);
 
             if ($validator->fails()) {
@@ -54,19 +56,20 @@ class EducationController extends Controller
                 return response()->json($response, 400);
             }
 
-            $education = Education::create([
-                'education_name' => $request->education_name,
-                'education_city' => $request->education_city,
-                'education_major' => $request->education_major,
-                'education_year_from' => $request->education_year_from,
-                'education_year_to' => $request->education_year_to,
-                'education_gpa' => $request->education_gpa,
+            $work_experiences = WorkExperience::create([
+                'work_experience_name' => $request->we_name,
+                'work_experience_city' => $request->we_city,
+                'work_experience_year_from' => $request->we_year_from,
+                'work_experience_year_to' => $request->we_year_to,
+                'work_experience_position' => $request->we_position,
+                'work_experience_job_description' => $request->we_job_description,
+                'work_experience_reason_to_leave' => $request->we_reason_to_leave,                
             ]);
 
             $response = [
                 'success' => true,
-                'data' => $education,
-                'message' => 'Insert data Education successfully'
+                'data' => $work_experiences,
+                'message' => 'Insert data Work Experience successfully'
             ];
 
             return response()->json($response, 200);
@@ -82,11 +85,13 @@ class EducationController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'education_name' => 'required',
-                'education_city' => 'required',
-                'education_year_from' => 'required|numeric',
-                'education_year_to' => 'required|numeric',
-                'education_gpa' => 'required|numeric',
+                'we_name' => 'required',
+                'we_city' => 'required',
+                'we_year_from' => 'required|numeric',
+                'we_year_to' => 'required|numeric',
+                'we_position' => 'required',
+                'we_job_description' => 'required',
+                'we_reason_to_leave' => 'required',                
             ]);
 
             if ($validator->fails()) {
@@ -97,21 +102,22 @@ class EducationController extends Controller
                 return response()->json($response, 400);
             }
 
-            $education = Education::find($id);
+            $work_experiences = WorkExperience::find($id);
 
-            $education->update([
-                'education_name' => $request->education_name,
-                'education_city' => $request->education_city,
-                'education_major' => $request->education_major,
-                'education_year_from' => $request->education_year_from,
-                'education_year_to' => $request->education_year_to,
-                'education_gpa' => $request->education_gpa,
+            $work_experiences->update([
+                'work_experience_name' => $request->we_name,
+                'work_experience_city' => $request->we_city,
+                'work_experience_year_from' => $request->we_year_from,
+                'work_experience_year_to' => $request->we_year_to,
+                'work_experience_position' => $request->we_position,
+                'work_experience_job_description' => $request->we_job_description,
+                'work_experience_reason_to_leave' => $request->we_reason_to_leave,                
             ]);
 
             $response = [
                 'success' => true,
-                'data' => $education,
-                'message' => 'Update data Education successfully'
+                'data' => $work_experiences,
+                'message' => 'Update data Work Experience successfully'
             ];
 
             return response()->json($response, 200);
@@ -126,13 +132,13 @@ class EducationController extends Controller
     public function destroy($id)
     {
         try {
-            $education = Education::find($id);
+            $work_experiences = WorkExperience::find($id);
 
-            $education->delete();
+            $work_experiences->delete();
 
             $response = [
                 'success' => true,
-                'message' => 'Delete data Education successfully'
+                'message' => 'Delete data Work Experience successfully'
             ];
 
             return response()->json($response, 200);
@@ -147,13 +153,13 @@ class EducationController extends Controller
     public function bulkDelete(Request $request)
     {
         try {
-            $education = Education::whereIn('id', $request->ids);
+            $work_experiences = WorkExperience::whereIn('id', $request->ids);
 
-            $education->delete();
+            $work_experiences->delete();
 
             $response = [
                 'success' => true,
-                'message' => 'Bulk Delete data Education successfully'
+                'message' => 'Bulk Delete data Work Experience successfully'
             ];
 
             return response()->json($response, 200);

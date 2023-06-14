@@ -21,16 +21,16 @@
     const createEducationSchema = yup.object({
         education_name: yup.string().required('education name is a required field'),
         education_city: yup.string().required('education city is a required field'),
-        education_year_from: yup.number('education year from must numeric format').required('education year from experience is a required field'),
-        education_year_to: yup.number('education year to must numeric format').required('education year to experience is a required field'),
+        education_year_from: yup.number('[education year from] must numeric format').required('[education year from] is a required field'),
+        education_year_to: yup.number('[education year to] must numeric format').required('[education year to] is a required field'),
         education_gpa: yup.number('GPA to must numeric format').required('GPA is a required field'),
     })
 
     const editEducationSchema = yup.object({
         education_name: yup.string().required('education name is a required field'),
         education_city: yup.string().required('education city is a required field'),
-        education_year_from: yup.number('education year from must numeric format').required('education year from experience is a required field'),
-        education_year_to: yup.number('education year to must numeric format').required('education year to experience is a required field'),
+        education_year_from: yup.number('[education year from] must numeric format').required('[education year from] is a required field'),
+        education_year_to: yup.number('[education year to] must numeric format').required('[education year to] is a required field'),
         education_gpa: yup.number('GPA to must numeric format').required('GPA is a required field'),
     })
 
@@ -232,12 +232,12 @@
                             <tr class="text-center">
                                 <th><input type="checkbox" v-model="selectAll" @change="selectAllEducations" /></th>
                                 <th style="width: 10px">#</th>
-                                <th>Education Name</th>
-                                <th>Education City</th>
-                                <th>Education Major</th>
-                                <th>Education Start Year</th>
-                                <th>Education End Year</th>
-                                <th>Education GPA</th>
+                                <th>Name</th>
+                                <th>City</th>
+                                <th>Major</th>
+                                <th>Year From</th>
+                                <th>Year To</th>
+                                <th>GPA</th>
                                 <th>Options</th>
                             </tr>
                         </thead>
@@ -284,27 +284,27 @@
                 <Form ref="form" @submit="handleSubmit" :validation-schema="editing ? editEducationSchema : createEducationSchema" v-slot="{ errors }" :initial-values="formValues">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="education_name">Education Name</label>
+                            <label for="education_name">Name</label>
                             <Field name="education_name" type="text" class="form-control" id="education_name" placeholder="Enter education name" :class="{ 'is-invalid': errors.education_name}" />
                             <span id="errorEducationName" class="invalid-feedback">{{ errors.education_name }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="education_city">Education City</label>
+                            <label for="education_city">City</label>
                             <Field name="education_city" type="text" class="form-control" id="education_city" placeholder="Enter education city" :class="{ 'is-invalid': errors.education_city}" />
                             <span id="errorEducationCity" class="invalid-feedback">{{ errors.education_city }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="education_major">Education Major</label>
+                            <label for="education_major">Major</label>
                             <Field name="education_major" type="text" class="form-control" id="education_major" placeholder="Enter education major" :class="{ 'is-invalid': errors.education_major}" />
                             <span id="errorEducationMajor" class="invalid-feedback">{{ errors.education_major }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="education_year_from">Education Year From</label>
+                            <label for="education_year_from">Year From</label>
                             <Field name="education_year_from" type="number" class="form-control" id="education_year_from" placeholder="Enter education year from" :class="{ 'is-invalid': errors.education_year_from}" />
                             <span id="errorEducationYearFrom" class="invalid-feedback">{{ errors.education_year_from }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="education_year_to">Education Year To</label>
+                            <label for="education_year_to">Year To</label>
                             <Field name="education_year_to" type="number" class="form-control" id="education_year_to" placeholder="Enter education year to" :class="{ 'is-invalid': errors.education_year_to}" />
                             <span id="errorEducationYearTo" class="invalid-feedback">{{ errors.education_year_to }}</span>
                         </div>

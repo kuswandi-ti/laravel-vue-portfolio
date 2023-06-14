@@ -12,6 +12,7 @@ use App\Http\Controllers\API\AppointmentStatusController;
 use App\Http\Controllers\API\AboutController;
 use App\Http\Controllers\API\SkillController;
 use App\Http\Controllers\API\EducationController;
+use App\Http\Controllers\API\WorkExperienceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,13 @@ Route::post('/login', [UserController::class, 'login']);
     Route::post('/educations/{id}', [EducationController::class, 'update']);
     Route::delete('/educations/{id}', [EducationController::class, 'destroy']);
     Route::delete('/educations', [EducationController::class, 'bulkDelete']);
+
+    // Work Experience
+    Route::get('/work_experiences', [WorkExperienceController::class, 'index']);
+    Route::post('/work_experiences', [WorkExperienceController::class, 'store']);
+    Route::post('/work_experiences/{id}', [WorkExperienceController::class, 'update']);
+    Route::delete('/work_experiences/{id}', [WorkExperienceController::class, 'destroy']);
+    Route::delete('/work_experiences', [WorkExperienceController::class, 'bulkDelete']);
 
     Route::post('/logout', [UserController::class, 'logout']);
 // });

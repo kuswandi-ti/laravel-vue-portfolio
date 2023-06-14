@@ -7,6 +7,7 @@ import Login from '../pages/auth/Login.vue';
 import UpdateAbout from '../pages/about/UpdateAbout.vue';
 import SkillList from '../pages/skill/SkillList.vue';
 import EducationList from '../pages/education/EducationList.vue';
+import WorkExperienceList from '../pages/work_experiences/WorkExperienceList.vue';
 
 export const routes = [
     {        
@@ -33,6 +34,11 @@ export const routes = [
         path: '/admin/educations',
         name: 'admin.educations',
         component: EducationList,
+    },
+    {        
+        path: '/admin/work_experiences',
+        name: 'admin.work_experiences',
+        component: WorkExperienceList,
     },
 ]
 
