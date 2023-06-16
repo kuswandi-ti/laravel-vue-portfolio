@@ -6,7 +6,6 @@
     import 'flatpickr/dist/themes/light.css';
 
     const formValues = ref()
-    const form = ref(null)
 
     const editUserSchema = yup.object({
         name: yup.string().required(),
@@ -56,6 +55,7 @@
                     about_description: response.data.data[0].about_description,
                     photo: response.data.data[0].photo,
                     cv: response.data.data[0].cv,
+                    existing_photo: response.data.data[0].cv,
                 }
             }            
         })
@@ -90,12 +90,10 @@
 
     const onFileChangePhoto = (e) => {
         formValues.value.photo = e.target.files[0]
-        // console.log(formValues.value.photo)
     };
 
     const onFileChangeCv = (e) => {
         formValues.value.cv = e.target.files[0]
-        // console.log(formValues.value.cv)
     };
 
     onMounted(() => {
@@ -112,7 +110,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">
-                        Edit About
+                        About
                     </h1>
                 </div>
                 <div class="col-sm-6">
@@ -122,9 +120,6 @@
                         </li>
                         <li class="breadcrumb-item">
                             About
-                        </li>
-                        <li class="breadcrumb-item active">
-                            Edit
                         </li>
                     </ol>
                 </div>
@@ -159,7 +154,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="job_description">Job Description</label>
-                                            <Field name="job_description" id="job_description" as="textarea" class="form-control" cols="30" rows="3" placeholder="Enter Job Description" :class="{'is-invalid': errors.job_description}" />
+                                            <Field name="job_description" id="job_description" as="textarea" class="form-control" cols="30" rows="2" placeholder="Enter Job Description" :class="{'is-invalid': errors.job_description}" />
                                             <span id="errorJobDescription" class="invalid-feedback">{{ errors.job_description }}</span>
                                         </div>                                        
                                     </div>
@@ -184,7 +179,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="address">Address</label>
-                                            <Field name="address" id="address" as="textarea" class="form-control" cols="30" rows="3" placeholder="Enter Address" :class="{'is-invalid': errors.address}" />
+                                            <Field name="address" id="address" as="textarea" class="form-control" cols="30" rows="2" placeholder="Enter Address" :class="{'is-invalid': errors.address}" />
                                             <span id="errorAddress" class="invalid-feedback">{{ errors.address }}</span>
                                         </div>                                        
                                     </div>
@@ -209,7 +204,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="about_description">About Description</label>
-                                            <Field name="about_description" id="about_description" as="textarea" class="form-control" cols="30" rows="3" placeholder="Enter About Description" :class="{'is-invalid': errors.about_description}" />
+                                            <Field name="about_description" id="about_description" as="textarea" class="form-control" cols="30" rows="2" placeholder="Enter About Description" :class="{'is-invalid': errors.about_description}" />
                                             <span id="errorAboutDescription" class="invalid-feedback">{{ errors.about_description }}</span>
                                         </div>                                        
                                     </div>
@@ -217,10 +212,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="name">Upload Photo</label>
+                                            <label for="name">Upload Photo </label>
                                             <Field name="photo" id="photo" as="file" class="form-control">
                                                 <input type="file" @change="onFileChangePhoto" />
-                                            </Field>
+                                            </Field>                                            
                                         </div>
                                     </div>
                                     <div class="col-md-6">

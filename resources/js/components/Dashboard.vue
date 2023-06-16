@@ -1,26 +1,26 @@
 <script setup>
-    import { ref, onMounted } from 'vue';
+    // import { ref, onMounted } from 'vue';
 
-    const selectedAppointmentStatus = ref('all')
-    const totalAppointmentCount = ref(0)
+    // const selectedAppointmentStatus = ref('all')
+    // const totalAppointmentCount = ref(0)
 
-    const getAppointmentsCount = async () => {
-        await axios.get('/api/status/appointments', {
-            params: {
-                status: selectedAppointmentStatus.value
-            }
-        })
-        .then((response) => {
-            totalAppointmentCount.value = response.data.data.totalAppointmentsCount
-        })
-        .catch((error) => {
-            actions.setErrors(error.response.data.message)
-        })
-    }
+    // const getAppointmentsCount = async () => {
+    //     await axios.get('/api/status/appointments', {
+    //         params: {
+    //             status: selectedAppointmentStatus.value
+    //         }
+    //     })
+    //     .then((response) => {
+    //         totalAppointmentCount.value = response.data.data.totalAppointmentsCount
+    //     })
+    //     .catch((error) => {
+    //         actions.setErrors(error.response.data.message)
+    //     })
+    // }
 
-    onMounted(() => {
-        getAppointmentsCount()
-    })
+    // onMounted(() => {
+    //     getAppointmentsCount()
+    // })
 </script>
 
 <template>
@@ -41,7 +41,7 @@
     </div>
 
 
-    <div class="content">
+    <!-- <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-2 col-6">
@@ -97,5 +97,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>

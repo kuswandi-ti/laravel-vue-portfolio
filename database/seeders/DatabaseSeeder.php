@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\UserTableSeeder;
 use Database\Seeders\ClientTableSeeder;
 use Database\Seeders\AppointmentTableSeeder;
+use Database\Seeders\PortfolioCategoryTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,5 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(ClientTableSeeder::class);
         $this->call(AppointmentTableSeeder::class);
+
+        $this->call(PortfolioCategoryTableSeeder::class);
     }
 }

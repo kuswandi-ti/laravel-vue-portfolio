@@ -54,12 +54,6 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <router-link to="/admin/dashboard" active-class="active" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p> Dashboard</p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
                             <router-link to="/admin/about" active-class="active" class="nav-link">
                                 <i class="nav-icon fas fa-address-card"></i>
                                 <p> About</p>
@@ -81,6 +75,14 @@
                             <router-link to="/admin/work_experiences" active-class="active" class="nav-link">
                                 <i class="nav-icon fas fa-briefcase"></i>
                                 <p> Work Experience</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/admin/portfolios" 
+                                :class="$route.path.startsWith('/admin/portfolios') ? 'active' : ''"
+                                class="nav-link">
+                                <i class="nav-icon fas fa-laptop-code"></i>
+                                <p> Portfolio</p>
                             </router-link>
                         </li>
                         <li class="nav-item">

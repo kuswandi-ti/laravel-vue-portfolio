@@ -13,6 +13,7 @@ use App\Http\Controllers\API\AboutController;
 use App\Http\Controllers\API\SkillController;
 use App\Http\Controllers\API\EducationController;
 use App\Http\Controllers\API\WorkExperienceController;
+use App\Http\Controllers\API\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,14 @@ Route::post('/login', [UserController::class, 'login']);
     Route::post('/work_experiences/{id}', [WorkExperienceController::class, 'update']);
     Route::delete('/work_experiences/{id}', [WorkExperienceController::class, 'destroy']);
     Route::delete('/work_experiences', [WorkExperienceController::class, 'bulkDelete']);
+
+    // Portfolio
+    Route::get('/portfolios', [PortfolioController::class, 'index']);
+    Route::post('/portfolios', [PortfolioController::class, 'store']);
+    Route::get('/portfolios/{id}', [PortfolioController::class, 'edit']);
+    Route::post('/portfolios/{id}', [PortfolioController::class, 'update']);
+    Route::delete('/portfolios/{id}', [PortfolioController::class, 'destroy']);
+    Route::get('/portfolios/categories/all', [PortfolioController::class, 'portfolioCategories']);
 
     Route::post('/logout', [UserController::class, 'logout']);
 // });

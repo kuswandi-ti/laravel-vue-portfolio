@@ -261,7 +261,7 @@
                         </tbody>
                         <tbody v-else>
                             <tr>
-                                <td colspan="9" class="text-center">
+                                <td colspan="10" class="text-center">
                                     No results found...
                                 </td>
                             </tr>

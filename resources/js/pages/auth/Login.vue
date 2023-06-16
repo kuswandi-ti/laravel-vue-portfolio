@@ -20,7 +20,7 @@
                     icon: 'success',
                     title: response.data.message
                 })
-                window.location.href="/admin/dashboard"                
+                window.location.href="/admin/about"                
             } else {
                 errorMessage.value = response.data.message
             }
