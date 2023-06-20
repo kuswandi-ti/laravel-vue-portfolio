@@ -6,6 +6,8 @@
     import 'flatpickr/dist/themes/light.css';
 
     const formValues = ref()
+    let path_photo = '';
+    let path_cv = '';
 
     const editUserSchema = yup.object({
         name: yup.string().required(),
@@ -55,9 +57,11 @@
                     about_description: response.data.data[0].about_description,
                     photo: response.data.data[0].photo,
                     cv: response.data.data[0].cv,
-                    existing_photo: response.data.data[0].cv,
                 }
-            }            
+            }
+
+            path_photo = formValues._value.photo
+            path_cv = formValues._value.cv
         })
     }
 
@@ -194,7 +198,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="phone">Phone</label>
+                                            <label for="phone">Phone (+62 format)</label>
                                             <Field name="phone" id="phone" type="text" class="form-control" placeholder="Enter Phone" :class="{'is-invalid': errors.phone}" />
                                             <span id="errorPhone" class="invalid-feedback">{{ errors.phone }}</span>
                                         </div>
@@ -215,7 +219,8 @@
                                             <label for="name">Upload Photo </label>
                                             <Field name="photo" id="photo" as="file" class="form-control">
                                                 <input type="file" @change="onFileChangePhoto" />
-                                            </Field>                                            
+                                            </Field>
+                                            <a :href="path_photo" target="_blank">View Photo</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -224,6 +229,7 @@
                                             <Field name="cv" id="cv" as="file" class="form-control">
                                                 <input type="file" @change="onFileChangeCv" />
                                             </Field>
+                                            <a :href="path_cv" target="_blank">View CV</a>
                                         </div>                                        
                                     </div>
                                 </div>

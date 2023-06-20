@@ -1,0 +1,4 @@
+TODO :
+========
+1. Saat upload photo di halaman admin, masih belum bisa preview image
+2. Path selalu ke localhost/admin/...
