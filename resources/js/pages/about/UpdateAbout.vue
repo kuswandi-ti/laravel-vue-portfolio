@@ -12,7 +12,7 @@
         job_title: yup.string().required('job title is a required field'),
         job_description: yup.string().required('job description is a required field'),
         place_of_birth: yup.string().required('place of birth is a required field'),
-        date_of_birth: yup.string().required('date or birth is a required field'),        
+        date_of_birth: yup.string().required('date or birth is a required field'),
         address: yup.string().required(),
         email: yup.string().email().required(),
         phone: yup.string().required(),
@@ -27,7 +27,7 @@
         await axios.get('/api/about')
         .then((response) => {
             if (response.data.data.length == 0) {
-                formValues.value = {                
+                formValues.value = {
                     id: 0,
                     name: '',
                     job_title: '',
@@ -42,7 +42,7 @@
                     cv: '',
                 }
             } else {
-                formValues.value = {                
+                formValues.value = {
                     id: response.data.data[0].id,
                     name: response.data.data[0].name,
                     job_title: response.data.data[0].job_title,
@@ -55,9 +55,8 @@
                     about_description: response.data.data[0].about_description,
                     photo: response.data.data[0].photo,
                     cv: response.data.data[0].cv,
-                    existing_photo: response.data.data[0].cv,
                 }
-            }            
+            }
         })
     }
 
@@ -76,12 +75,14 @@
         formData.append('photo', values.photo);
         formData.append('cv', values.cv);
 
+        console.log("disini")
+
         await axios.post('/api/about/' + formValues.value.id, formData)
         .then((response) => {
             Toast.fire({
                 icon: 'success',
                 title: response.data.message
-            })            
+            })
         })
         .catch((error) => {
             actions.setErrors(error.response.data.message)
@@ -100,7 +101,7 @@
         flatpickr(".flatpickr", {
             dateFormat: "Y-m-d",
         })
-        getAbout()        
+        getAbout()
     })
 </script>
 
@@ -147,7 +148,7 @@
                                             <label for="job_title">Job Title</label>
                                             <Field name="job_title" id="job_title" type="text" class="form-control" placeholder="Enter Job Title" :class="{'is-invalid': errors.job_title}" />
                                             <span id="errorJobTitle" class="invalid-feedback">{{ errors.job_title }}</span>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -156,7 +157,7 @@
                                             <label for="job_description">Job Description</label>
                                             <Field name="job_description" id="job_description" as="textarea" class="form-control" cols="30" rows="2" placeholder="Enter Job Description" :class="{'is-invalid': errors.job_description}" />
                                             <span id="errorJobDescription" class="invalid-feedback">{{ errors.job_description }}</span>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -165,14 +166,14 @@
                                             <label for="place_of_birth">Place of Birth</label>
                                             <Field name="place_of_birth" id="place_of_birth" type="text" class="form-control" placeholder="Enter Place of Birth" :class="{'is-invalid': errors.place_of_birth}" />
                                             <span id="errorPlaceOfBirth" class="invalid-feedback">{{ errors.place_of_birth }}</span>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="date_of_birth">Date of Birth</label>
                                             <Field name="date_of_birth" id="date_of_birth" type="text" class="form-control flatpickr" placeholder="Enter Date of Birth" :class="{'is-invalid': errors.date_of_birth}" />
                                             <span id="errorDateOfBirth" class="invalid-feedback">{{ errors.date_of_birth }}</span>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -181,7 +182,7 @@
                                             <label for="address">Address</label>
                                             <Field name="address" id="address" as="textarea" class="form-control" cols="30" rows="2" placeholder="Enter Address" :class="{'is-invalid': errors.address}" />
                                             <span id="errorAddress" class="invalid-feedback">{{ errors.address }}</span>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -206,7 +207,7 @@
                                             <label for="about_description">About Description</label>
                                             <Field name="about_description" id="about_description" as="textarea" class="form-control" cols="30" rows="2" placeholder="Enter About Description" :class="{'is-invalid': errors.about_description}" />
                                             <span id="errorAboutDescription" class="invalid-feedback">{{ errors.about_description }}</span>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -215,7 +216,10 @@
                                             <label for="name">Upload Photo </label>
                                             <Field name="photo" id="photo" as="file" class="form-control">
                                                 <input type="file" @change="onFileChangePhoto" />
-                                            </Field>                                            
+                                            </Field>
+                                            <!-- <span v-if="formValues.photo">
+                                                <a :href="formValues.photo" target="_blank">View Photo</a>
+                                            </span> -->
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -224,7 +228,10 @@
                                             <Field name="cv" id="cv" as="file" class="form-control">
                                                 <input type="file" @change="onFileChangeCv" />
                                             </Field>
-                                        </div>                                        
+                                            <!-- <span v-if="formValues.cv">
+                                                <a :href="formValues.cv" target="_blank">View File</a>
+                                            </span> -->
+                                        </div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>

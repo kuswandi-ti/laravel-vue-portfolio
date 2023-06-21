@@ -35,7 +35,7 @@ class AboutController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'name' => 'required',                
+                'name' => 'required',
                 'job_title' => 'required',
                 'job_description' => 'required',
                 'place_of_birth' => 'required',
@@ -58,7 +58,7 @@ class AboutController extends Controller
             $photo = $request->file('photo');
             $extension_photo = $photo->getClientOriginalExtension();
             $timestamp_name_photo = "photo_".time() . '.' . $extension_photo;
-            $path_photo = 'admin/images/photo/';
+            $path_photo = 'images/photo/';
             !is_dir($path_photo) && mkdir($path_photo, 0777, true);
             $new_photo = $path_photo . $timestamp_name_photo;
             Image::make($photo)->resize(300, 300)->save($new_photo);
@@ -67,7 +67,7 @@ class AboutController extends Controller
             $cv = $request->file('cv');
             $extension_cv = $cv->getClientOriginalExtension();
             $timestamp_name_cv = "cv_".time() . '.' . $extension_cv;
-            $path_cv = 'admin/document/pdf/';
+            $path_cv = 'document/pdf/';
             !is_dir($path_cv) && mkdir($path_cv, 0777, true);
             $new_cv = $path_cv . $timestamp_name_cv;
             $cv->move($path_cv, $timestamp_name_cv);
@@ -80,10 +80,10 @@ class AboutController extends Controller
                 'date_of_birth' => $request->date_of_birth,
                 'address' => $request->address,
                 'email' => $request->email,
-                'phone' => $request->phone,    
-                'about_description' => $request->about_description,            
-                'photo' => $new_photo, 
-                'cv' => $new_cv, 
+                'phone' => $request->phone,
+                'about_description' => $request->about_description,
+                'photo' => $new_photo,
+                'cv' => $new_cv,
             ];
 
             if (About::where('id', $id)->exists()) {
