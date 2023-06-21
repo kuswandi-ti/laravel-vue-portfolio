@@ -289,7 +289,8 @@
                             <li data-filter="*" class="filter-active">All</li>
                             @foreach ($portfolio_categories as $category)
                                 <li data-filter=".filter-{{ strtolower($category->category_name) }}">
-                                    {{ $category->category_name }}</li>
+                                    {{ $category->category_name }}
+                                </li>
                             @endforeach
                         </ul>
                     </div>
