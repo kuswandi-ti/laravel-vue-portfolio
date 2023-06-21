@@ -72,7 +72,7 @@ class AboutController extends Controller
                 $extension_photo = $photo->getClientOriginalExtension();
                 $timestamp_name_photo = "photo_" . time() . '.' . $extension_photo;
                 $path_save_to_db = 'photo/';
-                $path_upload = 'admin/photo/';
+                $path_upload = 'photo/';
                 !is_dir($path_upload) && mkdir($path_upload, 0777, true);
                 $new_photo_to_db = $path_save_to_db . $timestamp_name_photo;
                 $new_photo_upload = $path_upload . $timestamp_name_photo;
@@ -86,11 +86,10 @@ class AboutController extends Controller
                 $extension_cv = $cv->getClientOriginalExtension();
                 $timestamp_name_cv = "cv_" . time() . '.' . $extension_cv;
                 $path_save_to_db = 'cv/';
-                $path_upload = 'admin/cv/';
+                $path_upload = 'cv/';
                 !is_dir($path_upload) && mkdir($path_upload, 0777, true);
                 $new_cv_to_db = $path_save_to_db . $timestamp_name_cv;
-                $new_cv_upload = $path_upload . $timestamp_name_cv;
-                $cv->move($new_cv_upload, $timestamp_name_cv);
+                $cv->move($path_upload, $timestamp_name_cv);
                 $data['cv'] = $new_cv_to_db;
             }
 

@@ -48,7 +48,7 @@
         <div class="d-flex flex-column">
 
             <div class="profile">
-                <img src="{{ !empty($about->photo) ? asset('admin/'.$about->photo) : '' }}" alt=""
+                <img src="{{ !empty($about->photo) ? asset($about->photo) : '' }}" alt=""
                     class="img-fluid rounded-circle">
                 <h1 class="text-light"><a href="/"
                         class="text-warning">{{ !empty($about->name) ? $about->name : '' }}</a></h1>
@@ -61,7 +61,7 @@
                     <a href="admin/dashboard" class="btn btn-block btn-warning" target="_blank">
                         Admin Login
                     </a>
-                    <a href="{{ !empty($about->cv) ? asset('admin/'.$about->cv) : '' }}" class="btn btn-block btn-primary"
+                    <a href="{{ !empty($about->cv) ? asset($about->cv) : '' }}" class="btn btn-block btn-primary"
                         target="_blank">
                         Download CV
                     </a>
