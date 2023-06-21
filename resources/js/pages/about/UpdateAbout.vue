@@ -6,6 +6,8 @@
     import 'flatpickr/dist/themes/light.css';
 
     const formValues = ref()
+    let path_photo = '';
+    let path_cv = '';
 
     const editUserSchema = yup.object({
         name: yup.string().required(),
@@ -57,6 +59,9 @@
                     cv: response.data.data[0].cv,
                 }
             }
+
+            path_photo = formValues._value.photo
+            path_cv = formValues._value.cv
         })
     }
 
@@ -74,8 +79,6 @@
         formData.append('about_description', values.about_description);
         formData.append('photo', values.photo);
         formData.append('cv', values.cv);
-
-        console.log("disini")
 
         await axios.post('/api/about/' + formValues.value.id, formData)
         .then((response) => {
@@ -195,7 +198,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="phone">Phone</label>
+                                            <label for="phone">Phone (+62 format)</label>
                                             <Field name="phone" id="phone" type="text" class="form-control" placeholder="Enter Phone" :class="{'is-invalid': errors.phone}" />
                                             <span id="errorPhone" class="invalid-feedback">{{ errors.phone }}</span>
                                         </div>
@@ -217,9 +220,9 @@
                                             <Field name="photo" id="photo" as="file" class="form-control">
                                                 <input type="file" @change="onFileChangePhoto" />
                                             </Field>
-                                            <!-- <span v-if="formValues.photo">
-                                                <a :href="formValues.photo" target="_blank">View Photo</a>
-                                            </span> -->
+                                            <span v-if="path_photo">
+                                                <a :href="path_photo" target="_blank">View Photo</a>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -228,9 +231,9 @@
                                             <Field name="cv" id="cv" as="file" class="form-control">
                                                 <input type="file" @change="onFileChangeCv" />
                                             </Field>
-                                            <!-- <span v-if="formValues.cv">
-                                                <a :href="formValues.cv" target="_blank">View File</a>
-                                            </span> -->
+                                            <span v-if="path_cv">
+                                                <a :href="path_cv" target="_blank">View File</a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

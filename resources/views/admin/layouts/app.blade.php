@@ -40,7 +40,7 @@
             </a>
 
             <div class="sidebar">
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg"
                             class="img-circle elevation-2" alt="User Image">
@@ -48,7 +48,7 @@
                     <div class="info">
                         <a href="#" class="d-block">Alexander Pierce</a>
                     </div>
-                </div>
+                </div> --}}
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -78,7 +78,7 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link to="/admin/portfolios" 
+                            <router-link to="/admin/portfolios"
                                 :class="$route.path.startsWith('/admin/portfolios') ? 'active' : ''"
                                 class="nav-link">
                                 <i class="nav-icon fas fa-laptop-code"></i>

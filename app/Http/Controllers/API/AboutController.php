@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
 use App\Models\About;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 
-use Image;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller
 {
@@ -54,24 +54,6 @@ class AboutController extends Controller
                 return response()->json($response, 400);
             }
 
-            // Upload Image
-            $photo = $request->file('photo');
-            $extension_photo = $photo->getClientOriginalExtension();
-            $timestamp_name_photo = "photo_".time() . '.' . $extension_photo;
-            $path_photo = 'images/photo/';
-            !is_dir($path_photo) && mkdir($path_photo, 0777, true);
-            $new_photo = $path_photo . $timestamp_name_photo;
-            Image::make($photo)->resize(300, 300)->save($new_photo);
-
-            // Upload Cv
-            $cv = $request->file('cv');
-            $extension_cv = $cv->getClientOriginalExtension();
-            $timestamp_name_cv = "cv_".time() . '.' . $extension_cv;
-            $path_cv = 'document/pdf/';
-            !is_dir($path_cv) && mkdir($path_cv, 0777, true);
-            $new_cv = $path_cv . $timestamp_name_cv;
-            $cv->move($path_cv, $timestamp_name_cv);
-
             $data = [
                 'name' => $request->name,
                 'job_title' => $request->job_title,
@@ -82,9 +64,35 @@ class AboutController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'about_description' => $request->about_description,
-                'photo' => $new_photo,
-                'cv' => $new_cv,
             ];
+
+            // Upload Image
+            if ($request->hasFile('photo')) {
+                $photo = $request->file('photo');
+                $extension_photo = $photo->getClientOriginalExtension();
+                $timestamp_name_photo = "photo_" . time() . '.' . $extension_photo;
+                $path_save_to_db = 'photo/';
+                $path_upload = 'admin/photo/';
+                !is_dir($path_upload) && mkdir($path_upload, 0777, true);
+                $new_photo_to_db = $path_save_to_db . $timestamp_name_photo;
+                $new_photo_upload = $path_upload . $timestamp_name_photo;
+                Image::make($photo)->resize(300, 300)->save($new_photo_upload);
+                $data['photo'] = $new_photo_to_db;
+            }
+
+            // Upload Cv
+            if ($request->hasFile('cv')) {
+                $cv = $request->file('cv');
+                $extension_cv = $cv->getClientOriginalExtension();
+                $timestamp_name_cv = "cv_" . time() . '.' . $extension_cv;
+                $path_save_to_db = 'cv/';
+                $path_upload = 'admin/cv/';
+                !is_dir($path_upload) && mkdir($path_upload, 0777, true);
+                $new_cv_to_db = $path_save_to_db . $timestamp_name_cv;
+                $new_cv_upload = $path_upload . $timestamp_name_cv;
+                $cv->move($new_cv_upload, $timestamp_name_cv);
+                $data['cv'] = $new_cv_to_db;
+            }
 
             if (About::where('id', $id)->exists()) {
                 $about = About::find($id);
