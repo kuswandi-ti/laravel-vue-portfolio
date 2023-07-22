@@ -2,3 +2,6 @@ TODO :
 ========
 1. Saat upload photo di halaman admin, masih belum bisa preview image
 2. Path selalu ke localhost/admin/...
+
+3. Jika ada masalah setelah login berhasil, tetapi selalu redirect kembali ke halaman login, solusinya :
+   Jalankan dengan php artisan serve, akses di browser dengan alamat http://localhost:8000

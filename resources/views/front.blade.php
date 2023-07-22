@@ -173,9 +173,11 @@
 
                 <div class="section-title">
                     <h2>Skills</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                    {{-- <p>
+                        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
                         sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                    </p> --}}
                 </div>
 
                 <div class="row skills-content">
@@ -209,9 +211,11 @@
 
                 <div class="section-title">
                     <h2>Educations</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                    {{-- <p>
+                        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
                         sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                    </p> --}}
                 </div>
 
                 <div class="row">
@@ -245,9 +249,11 @@
 
                 <div class="section-title">
                     <h2>Work Experience</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                    {{-- <p>
+                        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
                         sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                    </p> --}}
                 </div>
 
                 <div class="row">
@@ -278,9 +284,11 @@
 
                 <div class="section-title">
                     <h2>Portfolio</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                    {{-- <p>
+                        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
                         sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                    </p> --}}
                 </div>
 
                 <div class="row" data-aos="fade-up">
@@ -307,7 +315,7 @@
                                     {{-- <a href="assets/img/portfolio/portfolio-1.jpg"  --}}
                                     <a href="assets/img/portfolio/project.png" data-gallery="portfolioGallery"
                                         class="portfolio-lightbox" title="{{ $portfolio->project_name }}">
-                                        <i class='bx bxs-show'></i>
+                                        <i class='bx bxs-show'>{{ $portfolio->project_name }}</i>
                                     </a>
                                 </div>
                             </div>
@@ -324,9 +332,11 @@
 
                 <div class="section-title">
                     <h2>Contact</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                    {{-- <p>
+                        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
                         sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                    </p> --}}
                 </div>
 
                 <div class="row" data-aos="fade-in">

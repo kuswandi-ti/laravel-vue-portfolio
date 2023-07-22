@@ -92,8 +92,31 @@
         })
     }
 
+    const getPhoto = () => {
+        let photo = '/img/avatar.jpg'
+                
+        if (formValues.photo) {
+            if (formValues.photo.indexOf('base64') != -1) {
+                photo = formValues.photo
+            } else {
+                photo = path_photo
+            }
+        } else {
+            photo = path_photo
+        }
+        
+        return photo        
+    }
+
     const onFileChangePhoto = (e) => {
-        formValues.value.photo = e.target.files[0]
+        // formValues.value.photo = e.target.files[0]
+        let file = e.target.files[0]
+        let reader = new FileReader()
+        reader.onloadend = (file) => {
+            formValues.photo = reader.result
+            console.log(formValues.photo)
+        }
+        reader.readAsDataURL(file)
     };
 
     const onFileChangeCv = (e) => {
@@ -104,7 +127,7 @@
         flatpickr(".flatpickr", {
             dateFormat: "Y-m-d",
         })
-        getAbout()
+        getAbout()                
     })
 </script>
 
@@ -218,11 +241,11 @@
                                         <div class="form-group">
                                             <label for="name">Upload Photo </label>
                                             <Field name="photo" id="photo" as="file" class="form-control">
-                                                <input type="file" @change="onFileChangePhoto" />
+                                                <input type="file" id="fileimg" @change="onFileChangePhoto" />
                                             </Field>
-                                            <span v-if="path_photo">
-                                                <a :href="path_photo" target="_blank">View Photo</a>
-                                            </span>
+                                            <div class="text-center">
+                                                <img class="profile-user-img img-fluid img-circle mt-5" :src="getPhoto()" style="width: 200px; height: 200px;">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

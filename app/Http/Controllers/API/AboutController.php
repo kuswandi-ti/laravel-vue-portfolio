@@ -77,7 +77,7 @@ class AboutController extends Controller
                 $new_photo_to_db = $path_save_to_db . $timestamp_name_photo;
                 $new_photo_upload = $path_upload . $timestamp_name_photo;
                 Image::make($photo)->resize(300, 300)->save($new_photo_upload);
-                $data['photo'] = $new_photo_to_db;
+                $data['photo'] = '/' . $new_photo_to_db;
             }
 
             // Upload Cv
@@ -90,7 +90,7 @@ class AboutController extends Controller
                 !is_dir($path_upload) && mkdir($path_upload, 0777, true);
                 $new_cv_to_db = $path_save_to_db . $timestamp_name_cv;
                 $cv->move($path_upload, $timestamp_name_cv);
-                $data['cv'] = $new_cv_to_db;
+                $data['cv'] = '/' . $new_cv_to_db;
             }
 
             if (About::where('id', $id)->exists()) {
