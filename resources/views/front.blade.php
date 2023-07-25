@@ -29,6 +29,8 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
+    @vite('resources/css/app.css')
+
     <!-- =======================================================
   * Template Name: iPortfolio
   * Updated: May 30 2023 with Bootstrap v5.3.0
@@ -456,6 +458,7 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
+    @vite('resources/js/app.js')
 </body>
 
 </html>
