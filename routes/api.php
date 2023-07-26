@@ -28,7 +28,7 @@ use App\Http\Controllers\API\PortfolioController;
 
 Route::post('/login', [UserController::class, 'login']);
 
-// Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     // About
     Route::get('/about', [AboutController::class, 'index']);
     Route::post('/about/{id}', [AboutController::class, 'update']);
@@ -63,4 +63,4 @@ Route::post('/login', [UserController::class, 'login']);
     Route::get('/portfolios/categories/all', [PortfolioController::class, 'portfolioCategories']);
 
     Route::post('/logout', [UserController::class, 'logout']);
-// });
+});
